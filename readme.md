@@ -10,35 +10,192 @@
 
 # MPLAB ML SDK Examples
 
-Comprehensive examples for working with the MPLAB ML Python SDK.
+Practical examples and tutorials for working with the [MPLAB ML Development Suite](https://mplabml.microchip.com) Python SDK.
 
 ## Quick Start
 
-1. [Create API Key](docs/getting-started/creating-api-key.md)
-2. Install: `pip install -r requirements.txt`
-3. Start with: [notebooks/01-getting-started/01-authentication.ipynb]
+### 1. Get an API Key
+Follow the [API key creation guide](docs/getting-started/creating-api-key.md) to set up authentication.
+
+### 2. Install Dependencies
+```bash
+pip install mplabml pandas matplotlib seaborn
+```
+
+### 3. Run Your First Notebook
+Start with [getting-started.ipynb](notebooks/getting-started.ipynb) to:
+- Authenticate with MPLAB ML
+- Explore available SDK functions
+- List your projects
+
+## Repository Structure
+```
+mplabml-sdk-examples/
+├── notebooks/                      # Interactive tutorials
+│   ├── getting-started.ipynb       # ✅ Start here!
+│   ├── sharing-projects.ipynb      # 🚧 Coming soon
+│   ├── understanding-data/         # 🚧 Data format guides
+│   ├── labeling-data/              # 🚧 Labeling techniques
+│   └── complete-workflows/         # 🚧 End-to-end examples
+│
+├── datasets/                       # Sample data for examples
+│   ├── arc-fault/                  # IEEE arc fault samples
+│   ├── gesture/                    # IMU gesture data
+│   └── vibration/                  # Motor vibration samples
+│
+├── docs/                           # Documentation
+│   ├── getting-started/
+│   │   └── creating-api-key.md    # ✅ API key setup guide
+│   └── concepts/                   # 🚧 Deep dive guides
+│
+└── scripts/                        # Utility scripts
+```
+
+## Available Notebooks
+
+### ✅ Ready to Use
+
+**[getting-started.ipynb](notebooks/getting-started.ipynb)**
+- Install and authenticate
+- Explore SDK functions
+- List projects
+
+### 🚧 Coming Soon
+
+**sharing-projects.ipynb**
+- Download complete projects
+- Share between accounts
+- Project transfer workflows
+
+**Understanding Data**
+- Sequential data format
+- Data exploration and visualization
+
+**Labeling Data**
+- Manual labeling
+- Threshold-based auto-labeling
+- Event-triggered labeling
+- Creating manifests
+
+## Using Datasets from the Repository
+
+Datasets are included in this repository for easy access in notebooks. You can load them directly:
+
+### Option 1: Clone the Repository
+```bash
+git clone https://github.com/MicrochipTech/mplabml-sdk-examples.git
+cd mplabml-sdk-examples
+jupyter notebook
+```
+
+Then in your notebook:
+```python
+import pandas as pd
+
+# Load sample data
+df = pd.read_csv('datasets/arc-fault/samples/normal_samples.csv')
+```
+
+### Option 2: Download Individual Files
+```python
+import pandas as pd
+
+# Download directly from GitHub
+url = 'https://raw.githubusercontent.com/your-username/mplabml-sdk-examples/main/datasets/arc-fault/samples/normal_samples.csv'
+df = pd.read_csv(url)
+```
+
+### Option 3: Use Sample Data Utility (Coming Soon)
+```python
+from utils import load_sample_data
+
+# Load pre-configured sample datasets
+df = load_sample_data('example-dataset')
+```
+
+## Datasets Included
+
+
 
 ## Learning Paths
 
-**🎓 Beginner Path** (Start here!)
-1. Authentication → Exploring Functions → List Projects
+### 🎓 Beginner
+1. [Create API Key](docs/getting-started/creating-api-key.md)
+2. [Getting Started Notebook](notebooks/getting-started.ipynb)
+3. [Sharing Projects](notebooks/sharing-projects.ipynb)
+4. Understanding Sequential Data Format
+5. Your first labeled dataset upload
 
-**📊 Data Preparation Path**
-1. Sequential Format → Creating Segments → Building Manifests → Upload
+### 📊 Data Preparation Focus
+1. Understanding Sequential Format
+2. Data Exploration and Visualization
+3. Manual Labeling
+4. Threshold-Based Auto-Labeling
+5. Creating Manifests
+6. Upload Complete Project
 
-**🏷️ Labeling Path**
-1. Manual Labeling → Threshold Labeling → Button-Triggered → Time Windows
+### 🚀 End-to-End Workflows
+1. Arc Fault Detection (complete pipeline)
+2. Gesture Recognition (IMU processing)
+3. Predictive Maintenance (feature engineering)
 
-**🚀 Complete Workflows**
-- Arc Fault Detection (end-to-end)
-- Gesture Recognition (IMU sensors)
-- Predictive Maintenance (vibration)
+## Requirements
 
-## Repository Structure
-- `notebooks/` - Interactive tutorials
-- `datasets/` - Sample data files
-- `docs/` - Detailed documentation
-- `scripts/` - Utility tools
+- Python 3.8+
+- MPLAB ML account ([sign up here](https://mplabml.microchip.com))
+- API key (see [setup guide](docs/getting-started/creating-api-key.md))
+
+### Python Dependencies
+```
+mplabml
+pandas
+numpy
+matplotlib
+seaborn
+jupyter
+```
+
+Install all at once:
+```bash
+pip install -r requirements.txt
+```
+
+## What is MPLAB ML?
+
+[MPLAB ML Development Suite](https://mplabml.microchip.com) is Microchip's cloud-based machine learning platform for embedded systems. It enables:
+
+- 🎯 **Edge ML**: Deploy models on microcontrollers (dsPIC33, SAMD21, etc.)
+- 📊 **Data Processing**: Time-series feature extraction and pipeline building
+- 🔧 **AutoML**: Automated model training and optimization
+- 💾 **Knowledge Packs**: Generate optimized C code for deployment
+- 🚀 **No ML Expertise Required**: GUI-driven workflow for engineers
 
 ## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md) for adding new examples.
+
+This repository is growing!
+
+- 📓 Additional example notebooks
+- 📊 New sample datasets
+- 📝 Documentation improvements
+- 🐛 Bug reports and fixes
+
+## Resources
+
+- [MPLAB ML Documentation](https://mplabml.microchip.com/docs)
+- [MPLAB ML Web Interface](https://mplabml.microchip.com)
+- [API Key Setup Guide](docs/getting-started/creating-api-key.md)
+- [Microchip Developer Help](https://microchipdeveloper.com)
+
+## License
+
+[Add your license here]
+
+## Support
+
+- 📖 Check the [documentation](docs/)
+
+---
+
+**Status**: 🚧 Active Development - New notebooks and examples added regularly!
+
+**Last Updated**: December 2025
