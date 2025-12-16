@@ -33,8 +33,8 @@ Start with [getting-started.ipynb](notebooks/getting-started.ipynb) to:
 mplabml-sdk-examples/
 ├── notebooks/                      # Interactive tutorials
 │   ├── getting-started.ipynb       # ✅ Start here!
-│   ├── sharing-projects.ipynb      # 🚧 Coming soon
-│   ├── understanding-data/         # 🚧 Data format guides
+│   ├── sharing-projects.ipynb      # ✅ Share projects between accounts
+│   ├── understanding-data.ipynb    # ✅ Data formats and exploration
 │   ├── labeling-data/              # 🚧 Labeling techniques
 │   └── complete-workflows/         # 🚧 End-to-end examples
 │
@@ -60,22 +60,29 @@ mplabml-sdk-examples/
 - Explore SDK functions
 - List projects
 
-### 🚧 Coming Soon
-
-**sharing-projects.ipynb**
+**[sharing-projects.ipynb](notebooks/sharing-projects.ipynb)**
 - Download complete projects
 - Share between accounts
 - Project transfer workflows
 
-**Understanding Data**
-- Sequential data format
-- Data exploration and visualization
+**[understanding-data.ipynb](notebooks/understanding-data.ipynb)**
+- Sequential vs wide data formats
+- Data quality checks (missing values, outliers, label issues)
+- Visualization techniques
+- Basic data cleaning
+
+### 🚧 Coming Soon
 
 **Labeling Data**
 - Manual labeling
 - Threshold-based auto-labeling
 - Event-triggered labeling
 - Creating manifests
+
+**Complete Workflows**
+- Arc fault detection (end-to-end)
+- Gesture recognition (IMU data)
+- Predictive maintenance (vibration)
 
 ## Using Datasets from the Repository
 
@@ -101,7 +108,7 @@ df = pd.read_csv('datasets/arc-fault/samples/normal_samples.csv')
 import pandas as pd
 
 # Download directly from GitHub
-url = 'https://raw.githubusercontent.com/your-username/mplabml-sdk-examples/main/datasets/arc-fault/samples/normal_samples.csv'
+url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/arc-fault/samples/normal_samples.csv'
 df = pd.read_csv(url)
 ```
 
@@ -110,24 +117,23 @@ df = pd.read_csv(url)
 from utils import load_sample_data
 
 # Load pre-configured sample datasets
-df = load_sample_data('example-dataset')
+df = load_sample_data('arc-fault-normal')
 ```
 
 ## Datasets Included
-
-
+Coming Soon
 
 ## Learning Paths
 
 ### 🎓 Beginner
 1. [Create API Key](docs/getting-started/creating-api-key.md)
 2. [Getting Started Notebook](notebooks/getting-started.ipynb)
-3. [Sharing Projects](notebooks/sharing-projects.ipynb)
-4. Understanding Sequential Data Format
+3. [Understanding Data Formats](notebooks/understanding-data.ipynb)
+4. [Sharing Projects](notebooks/sharing-projects.ipynb)
 5. Your first labeled dataset upload
 
 ### 📊 Data Preparation Focus
-1. Understanding Sequential Format
+1. [Understanding Sequential Format](notebooks/understanding-data.ipynb)
 2. Data Exploration and Visualization
 3. Manual Labeling
 4. Threshold-Based Auto-Labeling
@@ -135,9 +141,9 @@ df = load_sample_data('example-dataset')
 6. Upload Complete Project
 
 ### 🚀 End-to-End Workflows
-1. Arc Fault Detection (complete pipeline)
-2. Gesture Recognition (IMU processing)
-3. Predictive Maintenance (feature engineering)
+1. Arc Fault Detection (coming soon)
+2. Gesture Recognition (coming soon)
+3. Predictive Maintenance (coming soon)
 
 ## Requirements
 
@@ -172,7 +178,7 @@ pip install -r requirements.txt
 
 ## Contributing
 
-This repository is growing!
+This repository is growing! Contributions welcome:
 
 - 📓 Additional example notebooks
 - 📊 New sample datasets
@@ -193,6 +199,7 @@ This repository is growing!
 ## Support
 
 - 📖 Check the [documentation](docs/)
+- 💬 Open an issue for questions or bug reports
 
 ---
 
