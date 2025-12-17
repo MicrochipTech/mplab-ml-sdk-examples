@@ -142,9 +142,7 @@ Deleting a key immediately disables it - any applications using that key will lo
 ✅ You now have an API key!
 
 **Continue your journey:**
-1. 📓 [Authenticate in a notebook](../../notebooks/01-getting-started/01-authentication.ipynb)
-2. 🔍 [Explore SDK functions](../../notebooks/01-getting-started/02-exploring-sdk-functions.ipynb)
-3. 📊 [Work with your first project](../../notebooks/02-project-management/01-list-and-view-projects.ipynb)
+1. 📓 [Authenticate in a notebook](../../notebooks/getting-started.ipynb)
 
 ---
 
