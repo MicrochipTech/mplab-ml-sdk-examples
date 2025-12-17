@@ -15,7 +15,7 @@ Practical examples and tutorials for working with the [MPLAB ML Development Suit
 ## Quick Start
 
 ### 1. Get an API Key
-Follow the [API key creation guide](docs/getting-started/creating-api-key.md) to set up authentication.
+Follow the [API key creation guide](docs/getting-started/creating-an-api-key.md) to set up authentication.
 
 ### 2. Install Dependencies
 ```bash
@@ -71,18 +71,12 @@ mplabml-sdk-examples/
 - Visualization techniques
 - Basic data cleaning
 
-### 🚧 Coming Soon
 
 **Labeling Data**
 - Manual labeling
 - Threshold-based auto-labeling
 - Event-triggered labeling
 - Creating manifests
-
-**Complete Workflows**
-- Arc fault detection (end-to-end)
-- Gesture recognition (IMU data)
-- Predictive maintenance (vibration)
 
 ## Using Datasets from the Repository
 
@@ -100,7 +94,7 @@ Then in your notebook:
 import pandas as pd
 
 # Load sample data
-df = pd.read_csv('datasets/arc-fault/samples/normal_samples.csv')
+df = pd.read_csv('datasets/series_load_sample.csv')
 ```
 
 ### Option 2: Download Individual Files
@@ -108,7 +102,7 @@ df = pd.read_csv('datasets/arc-fault/samples/normal_samples.csv')
 import pandas as pd
 
 # Download directly from GitHub
-url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/arc-fault/samples/normal_samples.csv'
+url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/normal_samples.csv'
 df = pd.read_csv(url)
 ```
 
@@ -126,24 +120,18 @@ Coming Soon
 ## Learning Paths
 
 ### 🎓 Beginner
-1. [Create API Key](docs/getting-started/creating-api-key.md)
+1. [Create API Key](docs/getting-started/creating-an-api-key.md)
 2. [Getting Started Notebook](notebooks/getting-started.ipynb)
 3. [Understanding Data Formats](notebooks/understanding-data.ipynb)
 4. [Sharing Projects](notebooks/sharing-projects.ipynb)
-5. Your first labeled dataset upload
 
 ### 📊 Data Preparation Focus
 1. [Understanding Sequential Format](notebooks/understanding-data.ipynb)
-2. Data Exploration and Visualization
-3. Manual Labeling
+2. [Data Exploration and Visualization](notebooks/understanding-data.ipynb)
+3. [Manual Labeling: Working with Pre-labeled Datasets](notebooks/manual_labeling.ipynb)
 4. Threshold-Based Auto-Labeling
 5. Creating Manifests
 6. Upload Complete Project
-
-### 🚀 End-to-End Workflows
-1. Arc Fault Detection (coming soon)
-2. Gesture Recognition (coming soon)
-3. Predictive Maintenance (coming soon)
 
 ## Requirements
 
