@@ -10,12 +10,12 @@
 
 # MPLAB ML SDK Examples
 
-Practical examples and tutorials for working with the [MPLAB ML Development Suite](https://mplabml.microchip.com) Python SDK.
+Practical examples and tutorials for working with the [MPLAB ML Development Suite](https://www.microchip.com/en-us/tools-resources/develop/mplab-machine-learning-development-suite) Python SDK.
 
 ## Quick Start
 
 ### 1. Get an API Key
-Follow the [API key creation guide](docs/getting-started/creating-an-api-key.md) to set up authentication.
+Follow the [API key creation guide](docs/getting-started/creating-api-key.md) to set up authentication.
 
 ### 2. Install Dependencies
 ```bash
@@ -33,20 +33,19 @@ Start with [getting-started.ipynb](notebooks/getting-started.ipynb) to:
 mplabml-sdk-examples/
 ├── notebooks/                      # Interactive tutorials
 │   ├── getting-started.ipynb       # ✅ Start here!
-│   ├── sharing-projects.ipynb      # ✅ Share projects between accounts
-│   ├── understanding-data.ipynb    # ✅ Data formats and exploration
-│   ├── labeling-data/              # 🚧 Labeling techniques
-│   └── complete-workflows/         # 🚧 End-to-end examples
+│   ├── sharing-projects.ipynb      # ✅ Collaborate with others
+│   ├── understanding-data.ipynb    # ✅ Prepare your data
+│   └── labeling-data/
+│       ├── import-research-dataset.ipynb  # ✅ Import labeled datasets
+│       └── auto-label-with-events.ipynb   # ✅ Event-triggered labeling
 │
 ├── datasets/                       # Sample data for examples
-│   ├── arc-fault/                  # IEEE arc fault samples
-│   ├── gesture/                    # IMU gesture data
-│   └── vibration/                  # Motor vibration samples
+│   ├── series_load_sample.csv      # Arc fault data example
+│   └── gesture_sample.csv          # Gesture with button events
 │
 ├── docs/                           # Documentation
-│   ├── getting-started/
-│   │   └── creating-api-key.md    # ✅ API key setup guide
-│   └── concepts/                   # 🚧 Deep dive guides
+│   └── getting-started/
+│       └── creating-api-key.md     # ✅ API key setup guide
 │
 └── scripts/                        # Utility scripts
 ```
@@ -55,28 +54,29 @@ mplabml-sdk-examples/
 
 ### ✅ Ready to Use
 
-**[getting-started.ipynb](notebooks/getting-started.ipynb)**
-- Install and authenticate
-- Explore SDK functions
-- List projects
+**[getting-started.ipynb](notebooks/getting-started.ipynb)** - Start here!
+- Authentication and SDK setup
+- Explore available functions
+- List your projects
 
-**[sharing-projects.ipynb](notebooks/sharing-projects.ipynb)**
-- Download complete projects
-- Share between accounts
-- Project transfer workflows
+**[sharing-projects.ipynb](notebooks/sharing-projects.ipynb)** - Collaborate with others
+- Download and share complete projects
+- Transfer between accounts
 
-**[understanding-data.ipynb](notebooks/understanding-data.ipynb)**
-- Sequential vs wide data formats
-- Data quality checks (missing values, outliers, label issues)
-- Visualization techniques
-- Basic data cleaning
+**[understanding-data.ipynb](notebooks/understanding-data.ipynb)** - Prepare your data
+- Sequential vs wide formats
+- Data quality checks and visualization
+- Find and fix common issues
 
+**[import-research-dataset.ipynb](notebooks/labeling-data/import-research-dataset.ipynb)** - Use existing labeled data
+- Import from IEEE, Kaggle, or your own research
+- Work with pre-labeled datasets
+- Create manifest and upload to MPLAB ML
 
-**Labeling Data**
-- Manual labeling
-- Threshold-based auto-labeling
-- Event-triggered labeling
-- Creating manifests
+**[auto-label-with-events.ipynb](notebooks/labeling-data/auto-label-with-events.ipynb)** - Automate labeling with triggers
+- Use button press, GPIO, or PWM signals
+- Detect rising/falling edges automatically
+- Label gesture or activity segments
 
 ## Using Datasets from the Repository
 
@@ -93,45 +93,79 @@ Then in your notebook:
 ```python
 import pandas as pd
 
-# Load sample data
+# Load arc fault sample
 df = pd.read_csv('datasets/series_load_sample.csv')
+
+# Or load gesture sample
+df = pd.read_csv('datasets/gesture_sample.csv')
 ```
 
-### Option 2: Download Individual Files
+### Option 2: Download Directly from GitHub
 ```python
 import pandas as pd
 
-# Download directly from GitHub
-url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/normal_samples.csv'
+# Arc fault detection sample
+url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/series_load_sample.csv'
+df = pd.read_csv(url)
+
+# Gesture with button events sample
+url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main/datasets/gesture_sample.csv'
 df = pd.read_csv(url)
 ```
 
-### Option 3: Use Sample Data Utility (Coming Soon)
-```python
-from utils import load_sample_data
-
-# Load pre-configured sample datasets
-df = load_sample_data('arc-fault-normal')
-```
-
 ## Datasets Included
-Coming Soon
+
+**Arc Fault Detection Sample**
+- Source: IEEE Low Voltage DC Series Arc Fault dataset
+- Format: Sequential (Time, current_signal, label)
+- Size: 200,000 samples (~12.5 seconds)
+- Sampling rate: 16 kHz
+- Labels: -1 (normal), 0 (transient), 1 (arc fault)
+- Location: `datasets/series_load_sample.csv`
+
+**Gesture with Button Events Sample**
+- Format: Sequential (AccelerometerX/Y/Z, GyroscopeX/Y/Z, Trigger)
+- Size: 950 samples (~9.5 seconds)
+- Sampling rate: 100 Hz
+- Events: 3 wave gestures with button triggers
+- Location: `datasets/gesture_sample.csv`
 
 ## Learning Paths
 
-### 🎓 Beginner
-1. [Create API Key](docs/getting-started/creating-an-api-key.md)
-2. [Getting Started Notebook](notebooks/getting-started.ipynb)
-3. [Understanding Data Formats](notebooks/understanding-data.ipynb)
-4. [Sharing Projects](notebooks/sharing-projects.ipynb)
+### 🚀 Complete Workflow (Recommended)
+Follow this path to go from setup to trained model:
 
-### 📊 Data Preparation Focus
-1. [Understanding Sequential Format](notebooks/understanding-data.ipynb)
-2. [Data Exploration and Visualization](notebooks/understanding-data.ipynb)
-3. [Manual Labeling: Working with Pre-labeled Datasets](notebooks/manual_labeling.ipynb)
-4. Threshold-Based Auto-Labeling
-5. Creating Manifests
-6. Upload Complete Project
+1. **Setup** → [Create API Key](docs/getting-started/creating-api-key.md)
+2. **Authenticate** → [Getting Started](notebooks/getting-started.ipynb)
+3. **Prepare Data** → [Understanding Data Formats](notebooks/understanding-data.ipynb)
+4. **Import Data** → Choose your path:
+   - Already have labels? → [Import Research Dataset](notebooks/labeling-data/import-research-dataset.ipynb)
+   - Need to label with events? → [Auto-Label with Events](notebooks/labeling-data/auto-label-with-events.ipynb)
+5. **Train Model** → Use MPLAB ML web interface for pipeline building and training
+6. **Collaborate** → [Sharing Projects](notebooks/sharing-projects.ipynb) (optional)
+
+### 📊 I Have Labeled Data
+Skip straight to importing your research or proprietary datasets:
+
+1. [Create API Key](docs/getting-started/creating-api-key.md) - Set up authentication
+2. [Getting Started](notebooks/getting-started.ipynb) - Connect to MPLAB ML
+3. [Understanding Data](notebooks/understanding-data.ipynb) - Verify your data format
+4. [Import Research Dataset](notebooks/labeling-data/import-research-dataset.ipynb) - Upload with labels
+
+### 🎯 I Need to Label Data with Events
+Collect data with hardware triggers and auto-label:
+
+1. [Create API Key](docs/getting-started/creating-api-key.md) - Set up authentication
+2. [Getting Started](notebooks/getting-started.ipynb) - Connect to MPLAB ML
+3. [Auto-Label with Events](notebooks/labeling-data/auto-label-with-events.ipynb) - Button/GPIO labeling
+
+### 🎓 Quick Reference
+**Just need one thing?**
+- 🔑 [Set up API key](docs/getting-started/creating-api-key.md)
+- 📤 [Share a project](notebooks/sharing-projects.ipynb)
+- ✅ [Check data quality](notebooks/understanding-data.ipynb)
+- 📥 [Import labeled data](notebooks/labeling-data/import-research-dataset.ipynb)
+- 🔘 [Auto-label with button/events](notebooks/labeling-data/auto-label-with-events.ipynb)
 
 ## Requirements
 
@@ -187,7 +221,7 @@ This repository is growing! Contributions welcome:
 ## Support
 
 - 📖 Check the [documentation](docs/)
-- 💬 Open an issue for questions or bug reports
+- 🌐 Visit [MPLAB ML Documentation](https://mplabml.microchip.com/docs)
 
 ---
 
