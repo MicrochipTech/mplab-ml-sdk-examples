@@ -31,12 +31,15 @@ Start with [getting-started.ipynb](notebooks/getting-started.ipynb) to:
 ## Repository Structure
 ```
 mplabml-sdk-examples/
-├── notebooks/                      # Interactive tutorials
-│   ├── getting-started.ipynb       # ✅ Start here!
-│   ├── sharing-projects.ipynb      # ✅ Collaborate with others
-│   ├── understanding-data.ipynb    # ✅ Prepare your data
-│   ├── import-research-dataset.ipynb  # ✅ Import labeled datasets
-│   └── auto-label-with-events.ipynb   # ✅ Event-triggered labeling
+├── notebooks/                               # Interactive tutorials
+│   ├── getting-started.ipynb                # ✅ Start here!
+│   ├── sharing-projects.ipynb               # ✅ Collaborate with others
+│   ├── understanding-data.ipynb             # ✅ Prepare your data
+│   ├── import-research-dataset.ipynb        # ✅ Import labeled datasets
+│   ├── import-research-dataset.ipynb        # ✅ Import labeled datasets
+│   ├── auto-label-with-events.ipynb         # ✅ Event-triggered labeling
+│   ├── auto-label-continuous-signals.ipynb  # ✅ Label continuous signal data
+│   └── auto-label-gesture-data.ipynb        # ✅ Label gesture data
 │
 ├── datasets/                       # Sample data for examples
 │   ├── series_load_sample.csv      # Arc fault data example
@@ -77,9 +80,23 @@ mplabml-sdk-examples/
 - Detect rising/falling edges automatically
 - Label gesture or activity segments
 
+**[auto-label-continuous-signals.ipynb](notebooks/auto-label-continuous-signals.ipynb)** - Automate labeling for contiuous signal data
+- For use with dataset containing continous discrete signals such as current, etc
+- Expects a specific folder structure while saving data CSV
+- Automatically adds labels and metadata for test and train data
+- Sample dataset provided for your convenience [here](datasets/PrediciveMaintWedge.zip)
+
+**[auto-label-gesture-data.ipynb](notebooks/auto-label-gesture-data.ipynb)** - Automate labeling for gesture data
+- For use with gestures dataset
+- Needs a trigger signal to mark the dataset with gesture information
+- Trigger signal is a simple GPIO (button press) where a high indicates gesture performed
+- Expects a specific folder structure while saving data CSV
+- Automatically adds labels and metadata for test and train data
+- Sample dataset provided for your convenience [here](datasets/MagicWandSimple.zip)
+
 ## Using Datasets from the Repository
 
-Datasets are included in this repository for easy access in notebooks. You can load them directly:
+Datasets as CSV files are included in this repository for easy access in notebooks. You can load them directly:
 
 ### Option 1: Clone the Repository
 ```bash
@@ -112,6 +129,10 @@ url = 'https://raw.githubusercontent.com/MicrochipTech/mplabml-sdk-examples/main
 df = pd.read_csv(url)
 ```
 
+### Note:
+For auto-label-continuous-signals.ipynb and auto-label-gesture-data.ipynb notebooks, a large sample of dataset is collected in csv files and compressed into a zip folder (PrediciveMaintWedge.zip and MagicWandSimple.zip respectively).
+You can download them and then upload them to your content folder of your google colab session.
+
 ## Datasets Included
 
 **Arc Fault Detection Sample**
@@ -120,14 +141,25 @@ df = pd.read_csv(url)
 - Size: 200,000 samples (~12.5 seconds)
 - Sampling rate: 16 kHz
 - Labels: -1 (normal), 0 (transient), 1 (arc fault)
-- Location: `datasets/series_load_sample.csv`
+- Location: [datasets/series_load_sample.csv](datasets/series_load_sample.csv)
 
 **Gesture with Button Events Sample**
 - Format: Sequential (AccelerometerX/Y/Z, GyroscopeX/Y/Z, Trigger)
 - Size: 950 samples (~9.5 seconds)
 - Sampling rate: 100 Hz
 - Events: 3 wave gestures with button triggers
-- Location: `datasets/gesture_sample.csv`
+- Location: [datasets/gesture_sample.csv](datasets/gesture_sample.csv)
+
+**Quadrature current and rpm for anomaly detection in FOC based motor control systems**
+- Labels: 1 (normal), 2 (unbalanced)
+- Size: 10,000 samples
+- Location: [datasets/PrediciveMaintWedge.zip](datasets/PrediciveMaintWedge.zip)
+
+**Data Samples (zip) to autolabel gesture based applications**
+- Labels: 1 (horizontal), 2 (idle), 3(round), 4(vertical)
+- Format: Sequential (AccelerometerX/Y/Z, GyroscopeX/Y/Z, Trigger)
+- Location: [datasets/MagicWandSimple.zip](datasets/MagicWandSimple.zip)
+
 
 ## Learning Paths
 
@@ -151,20 +183,35 @@ Skip straight to importing your research or proprietary datasets:
 3. [Understanding Data](notebooks/understanding-data.ipynb) - Verify your data format
 4. [Import Research Dataset](notebooks/import-research-dataset.ipynb) - Upload with labels
 
-### 🎯 I Need to Label Data with Events
-Collect data with hardware triggers and auto-label:
+### 🎯 I Need to Label Data 
 
-1. [Create API Key](docs/getting-started/creating-an-api-key.md) - Set up authentication
-2. [Getting Started](notebooks/getting-started.ipynb) - Connect to MPLAB ML
-3. [Auto-Label with Events](notebooks/auto-label-with-events.ipynb) - Button/GPIO labeling
+**Gesture based demos**
 
+For gesture based applications, collect data (test and train samples) in the specified folder structure mentioned [here](notebooks/auto-label-gesture-data.ipynb). 
+Ensure that you collect data with hardware triggers. Follow steps below:
+
+1. Set up authentication → [Create API Key](docs/getting-started/creating-an-api-key.md) 
+2. Run this notebook on colab → [Auto-Label with Events](notebooks/auto-label-gesture-data.ipynb) 
+
+The data is labelled and metadata is added to indicate test/ train data. A project file is created and uploaded to your MPLAB ML Dev suite account.
+
+**Gesture based demos**
+For applications where you collect samples as continuous discrete signal and the entire sample has one label, collect data (test and train samples) in the specified folder structure mentioned [here](notebooks/auto-label-continuous-signals.ipynb). 
+Follow steps below: 
+
+1. Set up authentication → [Create API Key](docs/getting-started/creating-an-api-key.md) 
+2. Run this notebook on colab → [Auto-Label discrete signal data](notebooks/auto-label-continuous-signals.ipynb) 
+The data is labelled and metadata is added to indicate test/ train data. A project file is created and uploaded to your MPLAB ML Dev suite account.
+
+ 
+ 
 ### 🎓 Quick Reference
 **Just need one thing?**
 - 🔑 [Set up API key](docs/getting-started/creating-an-api-key.md)
 - 📤 [Share a project](notebooks/sharing-projects.ipynb)
 - ✅ [Check data quality](notebooks/understanding-data.ipynb)
 - 📥 [Import labeled data](notebooks/import-research-dataset.ipynb)
-- 🔘 [Auto-label with button/events](notebooks/auto-label-with-events.ipynb)
+- 🔘 [Auto-label gesture-based data with button/events and add test/train metadata](notebooks/auto-label-with-events.ipynb)
 
 ## Requirements
 
@@ -205,9 +252,7 @@ This repository is growing:
 - 📊 New sample datasets
 - 📝 Documentation improvements
 
-## Support
 
-- 
 
 ---
 
