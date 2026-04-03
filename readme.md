@@ -96,7 +96,7 @@ mplabml-sdk-examples/
 
 ## Using Datasets from the Repository
 
-Datasets as CSV files are included in this repository for easy access in notebooks. You can load them directly:
+Datasets as CSV files are included in this repository [here](datasets/), for easy access in notebooks. You can load them directly:
 
 ### Option 1: Clone the Repository
 ```bash
@@ -130,7 +130,7 @@ df = pd.read_csv(url)
 ```
 
 ### Note:
-For auto-label-continuous-signals.ipynb and auto-label-gesture-data.ipynb notebooks, a large sample of dataset is collected in csv files and compressed into a zip folder (PrediciveMaintWedge.zip and MagicWandSimple.zip respectively).
+For auto-label-continuous-signals.ipynb and auto-label-gesture-data.ipynb notebooks, a large sample of dataset is collected in csv files and compressed into a zip folder ([PrediciveMaintWedge.zip](datasets/PrediciveMaintWedge.zip) and [MagicWandSimple.zip](datasets/MagicWandSimple.zip) respectively).
 You can download them and then upload them to your content folder of your google colab session.
 
 ## Datasets Included
