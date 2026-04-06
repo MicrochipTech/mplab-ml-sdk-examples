@@ -195,7 +195,8 @@ Ensure that you collect data with hardware triggers. Follow steps below:
 
 The data is labelled and metadata is added to indicate test/ train data. A project file is created and uploaded to your MPLAB ML Dev suite account.
 
-**Gesture based demos**
+**Continuous Signal based demos**
+
 For applications where you collect samples as continuous discrete signal and the entire sample has one label, collect data (test and train samples) in the specified folder structure mentioned [here](notebooks/auto-label-continuous-signals.ipynb). 
 Follow steps below: 
 
